@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";  // Ensure this is correctly imported
+import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const Cafe = () => {
   const [popupContent, setPopupContent] = useState(null);
+  const [itemFound, setItemFound] = useState(false); // State to track if the item is found
   const navigate = useNavigate();  // Correctly initialized navigate hook
 
   const handlePopup = (content) => {
@@ -13,32 +14,54 @@ const HomePage = () => {
     setPopupContent(null);
   };
 
+  const handleItemFound = () => {
+    setItemFound(true); // Mark the item as found
+    handlePopup("You found the key! Now you can progress.");
+  };
+
+  const handleProgress = () => {
+    if (itemFound) {
+      navigate("/admin");  // Only navigate if the item is found
+    } else {
+      handlePopup("You need to find the key first!");
+    }
+  };
+
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <img
-        src="/lobby.png"
-        alt="Lobby"
+        src="/cafe.png"
+        alt="Cafe"
         useMap="#workmap"
         style={{
           position: "absolute",
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "Fill",
         }}
       />
       <map name="workmap">
         <area
           shape="rect"
-          coords="350,500,550,625"
+          coords="400,10,550,100"
           alt="Computer"
-          onClick={() => handlePopup("Welcome! Okay, so there's this guy trying to kill you. You need to escape.")}
+          onClick={() => handlePopup("Nope! no key here bucko")}
           style={{ cursor: "pointer" }}
         />
         <area
           shape="rect"
-          coords="600,175,900,425"
-          alt="Door"
-          onClick={() => navigate("/cafe")}  // Ensure this works correctly
+          coords="350,680,425,640"
+          alt="Tray"
+          onClick={() => handlePopup("Nope! no key here bucko")}
+          style={{ cursor: "pointer" }}
+        />
+        <area
+          shape="rect"
+          coords="450,725,550,660"
+          alt="Cup"
+          onClick={() => {
+            handleItemFound(); // Mark item as found when clicked
+          }}
           style={{ cursor: "pointer" }}
         />
       </map>
@@ -46,7 +69,9 @@ const HomePage = () => {
       <img
         src="/question mark.png"
         alt="Hint"
-        onClick={() => handlePopup("click on the door dumbass")}
+        onClick={() =>
+          handlePopup("The door is closed! Find a key in one of the items on the tables")
+        }
         style={{
           position: "fixed",
           bottom: "20px",
@@ -56,6 +81,23 @@ const HomePage = () => {
           cursor: "pointer",
         }}
       />
+      
+      {itemFound && (  // Only show if the item is found
+        <img
+          src="/next area.png"
+          alt="Next Area"
+          onClick={handleProgress}  // Progress to the next area
+          style={{
+            position: "fixed",
+            bottom: "0px",
+            left: "45vw",
+            width: "100px",  // You can adjust the size here
+            height: "200px", // Adjust size as needed
+            transform: "rotate(90deg)", // Rotate the image 90 degrees
+            cursor: "pointer",
+          }}
+        />
+      )}
 
       {/* Popup Modal */}
       {popupContent && (
@@ -109,4 +151,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Cafe;
