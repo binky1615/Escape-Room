@@ -1,18 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import UserInterface from "./pages/UserInterface"
-import StartScreen from "./pages/StartScreen"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Cafe from './pages/Cafe';
+import Admin from './pages/Admin';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route index path="/start" element={<StartScreen />} />
-        </Routes>
-      </BrowserRouter >
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cafe" element={<Cafe />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
