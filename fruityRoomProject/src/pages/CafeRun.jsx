@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";  // Ensure this is correctly imported
+import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const CafeRun = () => {
   const [popupContent, setPopupContent] = useState(null);
   const navigate = useNavigate();  // Correctly initialized navigate hook
 
@@ -16,23 +16,32 @@ const HomePage = () => {
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <img
-        src="/medbay.png"
-        alt="Medbay"
+        src="/cafe.png"
+        alt="Cafe"
         useMap="#workmap"
         style={{
           position: "absolute",
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "Fill",
         }}
       />
       <map name="workmap">
+        <area
+          shape="rect"
+          coords="700,300,800,400"
+          alt="Computer"
+          onClick={() => navigate("/storage")}
+          style={{ cursor: "pointer" }}
+        />
       </map>
 
       <img
-        src="/white question mark.png"
+        src="/question mark.png"
         alt="Hint"
-        onClick={() => handlePopup("do you see a puzzle you dumbass. just go through the door")}
+        onClick={() =>
+          handlePopup("PRESS THE BUTTON AND ESCAPE!")
+        }
         style={{
           position: "fixed",
           bottom: "20px",
@@ -42,21 +51,7 @@ const HomePage = () => {
           cursor: "pointer",
         }}
       />
-
-        <img
-          src="/next area.png"
-          alt="Next Area"
-          onClick={() => navigate("/caferun")}
-          style={{
-            position: "fixed",
-            top: "0px",
-            left: "30vw",
-            width: "100px",  // You can adjust the size here
-            height: "200px", // Adjust size as needed
-            transform: "rotate(-90deg)", // Rotate the image 90 degrees
-            cursor: "pointer",
-          }}
-        />
+      
 
       {/* Popup Modal */}
       {popupContent && (
@@ -110,4 +105,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default CafeRun;
