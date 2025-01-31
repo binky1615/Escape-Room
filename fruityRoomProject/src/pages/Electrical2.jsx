@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Electrical = () => {
-
+const Electrical2 = () => {
     const [popupContent, setPopupContent] = useState(null);
     const navigate = useNavigate();  // Correctly initialized navigate hook
   
@@ -13,35 +12,36 @@ const Electrical = () => {
     const closePopup = () => {
       setPopupContent(null);
     };
-
+  
     return ( 
         <>
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <img
-        src="/darkness.png"
-        alt="dark electrical"
+        src="/electrical.png"
+        alt="Electrical"
         useMap="#workmap"
         style={{
           position: "absolute",
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "fill",
         }}
       />
       <map name="workmap">
-        <area
+      <area
           shape="rect"
-          coords="1350,250,1400,325"
-          alt="Fleshlight"
-          onClick={() => navigate("/electrical2")}
+          coords="60,250,200,325"
+          alt="Vent"
+          onClick={() => navigate("/medbay")}
           style={{ cursor: "pointer" }}
         />
+
       </map>
 
       <img
         src="/white question mark.png"
         alt="Hint"
-        onClick={() => handlePopup("search the darkness for a flashlight")}
+        onClick={() => handlePopup("go through the vent to continue")}
         style={{
           position: "fixed",
           bottom: "20px",
@@ -105,4 +105,4 @@ const Electrical = () => {
      );
 }
  
-export default Electrical;
+export default Electrical2;
