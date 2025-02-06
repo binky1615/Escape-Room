@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Cafe = () => {
   const [popupContent, setPopupContent] = useState(null);
   const [itemFound, setItemFound] = useState(false);
