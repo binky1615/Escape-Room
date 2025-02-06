@@ -41,7 +41,7 @@ const Electrical = () => {
       <img
         src="/white question mark.png"
         alt="Hint"
-        onClick={() => handlePopup("search the darkness for a flashlight")}
+        onClick={() => handlePopup("The room is pitch black. Surely someone left a flashlight lying around somewhere, right?")}
         style={{
           position: "fixed",
           bottom: "20px",

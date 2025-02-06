@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const Cafe = () => {
   const [popupContent, setPopupContent] = useState(null);
-  const [itemFound, setItemFound] = useState(false); // State to track if the item is found
-  const navigate = useNavigate();  // Correctly initialized navigate hook
+  const [itemFound, setItemFound] = useState(false);
+  const navigate = useNavigate();  
 
   const handlePopup = (content) => {
     setPopupContent(content);
@@ -15,7 +15,7 @@ const Cafe = () => {
   };
 
   const handleItemFound = () => {
-    setItemFound(true); // Mark the item as found
+    setItemFound(true);
     handlePopup("You found the key! Now you can progress.");
   };
 

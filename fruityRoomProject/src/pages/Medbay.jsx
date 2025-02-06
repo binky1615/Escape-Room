@@ -32,7 +32,7 @@ const HomePage = () => {
       <img
         src="/white question mark.png"
         alt="Hint"
-        onClick={() => handlePopup("do you see a puzzle you dumbass. just go through the door")}
+        onClick={() => handlePopup("There doesn't seem to be anything to do in this room and the door is already open...")}
         style={{
           position: "fixed",
           bottom: "20px",

@@ -40,7 +40,7 @@ const Storage = () => {
         src="/white question mark.png"
         alt="Hint"
         onClick={() =>
-          handlePopup("CLICK ON THE TRASH DEPOSIT AND LEAVE")
+          handlePopup("Click on the floor in front of the door to escape.")
         }
         style={{
           position: "fixed",

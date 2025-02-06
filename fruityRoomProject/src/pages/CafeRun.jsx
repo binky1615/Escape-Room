@@ -40,7 +40,7 @@ const CafeRun = () => {
         src="/question mark.png"
         alt="Hint"
         onClick={() =>
-          handlePopup("PRESS THE BUTTON AND ESCAPE!")
+          handlePopup("")
         }
         style={{
           position: "fixed",
