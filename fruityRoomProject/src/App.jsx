@@ -6,8 +6,10 @@ import Admin from './pages/Admin';
 import Electrical from './pages/Electrical';
 import Electrical2 from './pages/Electrical2';
 import Medbay from './pages/Medbay';
+import secret from './pages/SecretRoom';
 import Storage from './pages/Storage';
 import EndScreen from './pages/EndScreen';
+import SecretRoom from './pages/SecretRoom';
 
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
         <Route path="/electrical" element={<Electrical />} />
         <Route path="/electrical2" element={<Electrical2 />} />
         <Route path="/medbay" element={<Medbay />} />
+        <Route path="/secret" element={<SecretRoom />} />
         <Route path="/storage" element={<Storage />} />
         <Route path="/endscreen" element={<EndScreen />} />
 

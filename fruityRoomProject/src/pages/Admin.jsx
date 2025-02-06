@@ -19,7 +19,7 @@ const Admin = () => {
   };
 
   const handleCodeSubmit = () => {
-    if (enteredCode === "777") {
+    if (enteredCode === "797") {
       navigate("/electrical"); // Navigate to next room if correct
     } else {
       setErrorMessage("Incorrect code. Try again.");
@@ -44,14 +44,28 @@ const Admin = () => {
           shape="rect"
           coords="400,400,500,600"
           alt="Computer"
-          onClick={() => handlePopup("Alright bucko, here's your code. 777")}
+          onClick={() => handlePopup("Alright bucko, here's your code. 7")}
           style={{ cursor: "pointer" }}
         />
         <area
           shape="rect"
           coords="1050,400,1150,600"
-          alt="Door"
+          alt="panel"
           onClick={() => setShowCodePopup(true)} // Show input popup
+          style={{ cursor: "pointer" }}
+        />
+        <area
+          shape="rect"
+          coords="725,0,850,75"
+          alt="Computer"
+          onClick={() => handlePopup("Alright bucko, here's your code. 7")}
+          style={{ cursor: "pointer" }}
+        />
+        <area
+          shape="rect"
+          coords="1250,0,1500,75"
+          alt="Computer"
+          onClick={() => handlePopup("Alright bucko, here's your code. 9")}
           style={{ cursor: "pointer" }}
         />
       </map>

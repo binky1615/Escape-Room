@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";  // Ensure this is correctly imp
 
 const HomePage = () => {
   const [popupContent, setPopupContent] = useState(null);
-  const navigate = useNavigate();  // Correctly initialized navigate hook
+  const [showCodePopup, setShowCodePopup] = useState(false);
+  const [enteredCode, setEnteredCode] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handlePopup = (content) => {
     setPopupContent(content);
@@ -11,6 +14,16 @@ const HomePage = () => {
 
   const closePopup = () => {
     setPopupContent(null);
+    setShowCodePopup(false);
+    setErrorMessage(""); // Clear error message when closing
+  };
+
+  const handleCodeSubmit = () => {
+    if (enteredCode === "2595") {
+      navigate("/secret");
+    } else {
+      setErrorMessage("Incorrect code. Try again.");
+    }
   };
 
   return (
@@ -27,6 +40,13 @@ const HomePage = () => {
         }}
       />
       <map name="workmap">
+        <area
+          shape="rect"
+          coords="1250,100,1500,400"
+          alt="panel"
+          onClick={() => setShowCodePopup(true)} // Show input popup
+          style={{ cursor: "pointer" }}
+        />
       </map>
 
       <img
@@ -73,7 +93,7 @@ const HomePage = () => {
             zIndex: 1000,
           }}
         >
-          <p>{popupContent}</p>
+          <p dangerouslySetInnerHTML={{ __html: popupContent }}></p>
           <button
             onClick={closePopup}
             style={{
@@ -91,8 +111,68 @@ const HomePage = () => {
         </div>
       )}
 
+      {/* Code Input Popup */}
+      {showCodePopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "#18990080",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            zIndex: 1000,
+            textAlign: "center",
+          }}
+        >
+          <p>Enter the code to unlock the door:</p>
+          <input
+            type="text"
+            value={enteredCode}
+            onChange={(e) => setEnteredCode(e.target.value)}
+            style={{
+              padding: "5px",
+              margin: "10px",
+              borderRadius: "5px",
+              border: "1px solid black",
+            }}
+          />
+          <br />
+          <button
+            onClick={handleCodeSubmit}
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "green",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginRight: "10px",
+            }}
+          >
+            Submit
+          </button>
+          <button
+            onClick={closePopup}
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "red",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Cancel
+          </button>
+          {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
+        </div>
+      )}
+
       {/* Background overlay */}
-      {popupContent && (
+      {(popupContent || showCodePopup) && (
         <div
           style={{
             position: "fixed",
