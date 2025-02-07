@@ -19,7 +19,7 @@ const HomePage = () => {
   };
 
   const handleCodeSubmit = () => {
-    if (enteredCode === "2595") {
+    if (enteredCode === "5292") {
       navigate("/secret");
     } else {
       setErrorMessage("Incorrect code. Try again.");
